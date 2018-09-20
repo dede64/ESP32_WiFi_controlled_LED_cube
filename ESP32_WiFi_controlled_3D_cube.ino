@@ -32,9 +32,6 @@ void setup()
   {
     pinMode(layer[i], OUTPUT);
   }
-  //seeding random for random pattern
-  randomSeed(analogRead(10));
-
 
   //Wifi
   WiFi.begin(ssid, password);
@@ -57,15 +54,12 @@ void setup()
   });
   server.begin();
 }
+
 //xxxxxxxxxxxxxxxxxxxxFUNCTION LOOPxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-int value = 0;
-
 void loop()
 { 
   turnOnMatrix(matrix, 10);
 }
-
 
 //xxxxxxxxxxxxxxxxxxxxFUNCTIONSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -97,11 +91,7 @@ void turnEverythingOn()
   }
 }
 
-//////////////////////////////////////////////////////////////////////turn on matrix
-//[15,11,07,03]-> colmumn layout
-//[14,10,06,02]
-//[13,09,05,01]
-//[12,08,04,00]
+//////////////////////////////////////////////////////////////////////Get matrix from string input
 
 void getMatrix(String param){
   for(int i = 0; i < 4; i++){
@@ -111,6 +101,11 @@ void getMatrix(String param){
   }
 }
 
+//////////////////////////////////////////////////////////////////////turn on matrix
+//[15,11,07,03]-> colmumn layout
+//[14,10,06,02]
+//[13,09,05,01]
+//[12,08,04,00]
 void turnOnMatrix(int matrix[][16], int mlsc) /// mlsc == 1/4 of display time
 {
   for(int i = 0; i < mlsc; i++){
